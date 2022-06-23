@@ -62,6 +62,37 @@ ssh-copy-id jenkins@<ip>
 
 # Generate the personal token in github.com
 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
+## token for blueocean
+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
 
 # host
 81f34a4e71844808a673898c49b155b01c.mylabserver.com
+
+# running docker in pipeline 
+## install jenkins plugin
+docker
+docker pipeline
+## install docker on node
+sudo yum install docker -y
+sudo chmod 666 /var/run/docker.sock
+sudo usermod -aG docker jenkins
+sudo systemctl restart docker
+
+# download jenkin plugin 
+updates.jenkins-ci.org/download/plugins
+## downgrade the plugin
+ssh into jenkins server
+wget the plugin from the above link
+got the *.hpi file
+cd /var/lib/jenkins/plugins/
+ls |grep github
+*-api
+*-api.jpi
+mv ./github-api ./github-api.old
+sudo !!
+sudo mv ./github-api.jpi ./github-api.jpi.old
+sudo cp download *.hpi file ./
+sudo chown jenkins:jenkins *.hpi 
+sudo systemctl restart jenkins
+login to check the version be changed
+
